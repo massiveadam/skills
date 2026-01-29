@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.56 — 2026-01-29
+- Better UX: `summary --json` now outputs a small **sanitized** JSON object (no location) for easy scripting; `--raw-json` is still available when you explicitly want raw `vehicle_data`.
+- Reliability: add unit tests for summary JSON sanitization.
+
+## 0.1.55 — 2026-01-29
+- Better UX: `report` now includes a compact seat-heater summary line when the vehicle reports seat heater levels.
+- JSON: `report --json` includes `climate.seat_heaters` when available.
+
+## 0.1.54 — 2026-01-29
+- New capability (safe): add `seats` command for seat heater status + setting levels (set requires `--yes`).
+
+## 0.1.53 — 2026-01-29
+- Better UX: `report` now includes a one-line openings summary (doors/trunk/frunk/windows) when the vehicle reports it.
+
+## 0.1.52 — 2026-01-29
+- New capability (safe): add `windows status` (read-only) with `--no-wake` + `--json`.
+
+## 0.1.51 — 2026-01-29
+- Fix: remove an invalid f-string escape in `list` output so `scripts/tesla.py` compiles cleanly and tests can import it.
+
+## 0.1.50 — 2026-01-29
+- Reliability: make `windows` command handler defensive (explicitly errors on unknown actions) and add unit tests.
+
+## 0.1.49 — 2026-01-29
+- Fix: repair an indentation bug in `report` output formatting that could break `python3 -m py_compile` / CLI execution.
+
 ## 0.1.48 — 2026-01-29
 - Security: set best-effort `0600` permissions on local token cache (`~/.tesla_cache.json`) and defaults (`~/.my_tesla.json`).
 - Reliability: add unit test for defaults file permission behavior.

@@ -51,8 +51,15 @@ python3 {baseDir}/scripts/tesla.py default-car "My Model 3"
 python3 {baseDir}/scripts/tesla.py summary
 python3 {baseDir}/scripts/tesla.py summary --no-wake   # don't wake a sleeping car
 
+# Summary as JSON (privacy-safe)
+# Unlike `status --json`, this emits a small sanitized object (no location).
+python3 {baseDir}/scripts/tesla.py summary --json
+python3 {baseDir}/scripts/tesla.py summary --json --raw-json   # raw vehicle_data (may include location)
+
 # One-screen report (chat friendly, more detail)
 # Includes battery/charging/climate + (when available) TPMS tire pressures.
+# Also includes a quick openings summary (doors/trunk/frunk/windows) when available.
+# When available, includes a compact seat heater summary line.
 python3 {baseDir}/scripts/tesla.py report
 python3 {baseDir}/scripts/tesla.py report --no-wake
 
@@ -64,10 +71,12 @@ python3 {baseDir}/scripts/tesla.py --car "My Model 3" status
 
 # JSON output (prints ONLY JSON; good for piping/parsing)
 # NOTE: `status --json` outputs *raw* `vehicle_data`, which may include location/drive_state.
-# Prefer `report --json` (sanitized) unless you explicitly need the raw payload.
-python3 {baseDir}/scripts/tesla.py status --json             # raw vehicle_data (may include location)
-python3 {baseDir}/scripts/tesla.py report --json             # sanitized report object (no location; includes scheduled charging + charge port state)
-python3 {baseDir}/scripts/tesla.py report --json --raw-json  # raw vehicle_data (may include location)
+# Prefer `summary --json` (sanitized) or `report --json` (sanitized) unless you explicitly need the raw payload.
+python3 {baseDir}/scripts/tesla.py summary --json              # sanitized summary object (no location)
+python3 {baseDir}/scripts/tesla.py report --json               # sanitized report object (no location; includes scheduled charging + charge port state)
+python3 {baseDir}/scripts/tesla.py status --json               # raw vehicle_data (may include location)
+python3 {baseDir}/scripts/tesla.py report --json --raw-json    # raw vehicle_data (may include location)
+python3 {baseDir}/scripts/tesla.py summary --json --raw-json   # raw vehicle_data (may include location)
 python3 {baseDir}/scripts/tesla.py charge status --json
 
 # Lock / unlock
@@ -116,9 +125,24 @@ python3 {baseDir}/scripts/tesla.py openings --json
 python3 {baseDir}/scripts/tesla.py trunk trunk --yes
 python3 {baseDir}/scripts/tesla.py trunk frunk --yes
 
+# Windows
+python3 {baseDir}/scripts/tesla.py windows status
+python3 {baseDir}/scripts/tesla.py windows status --no-wake
+python3 {baseDir}/scripts/tesla.py windows status --json
+
 # Windows (safety gated)
 python3 {baseDir}/scripts/tesla.py windows vent  --yes
 python3 {baseDir}/scripts/tesla.py windows close --yes
+
+# Seat heaters
+python3 {baseDir}/scripts/tesla.py seats status
+python3 {baseDir}/scripts/tesla.py seats status --no-wake
+python3 {baseDir}/scripts/tesla.py seats status --json
+
+# Seat heaters (safety gated)
+# seat: driver|passenger|rear-left|rear-center|rear-right|3rd-left|3rd-right (or 0–6)
+# level: 0–3 (0=off)
+python3 {baseDir}/scripts/tesla.py seats set driver 3 --yes
 
 # Sentry Mode (status is read-only; on/off safety gated)
 python3 {baseDir}/scripts/tesla.py sentry status
@@ -150,7 +174,7 @@ python3 {baseDir}/scripts/tesla.py flash  --yes
 ## Safety defaults
 
 Some actions require an explicit confirmation flag:
-- `unlock`, `charge start|stop|limit|amps`, `trunk`, `windows`, `sentry on|off`, `honk`, `flash`, `charge-port open|close`, and `scheduled-charging set|off` require `--yes`
+- `unlock`, `charge start|stop|limit|amps`, `trunk`, `windows`, `seats set`, `sentry on|off`, `honk`, `flash`, `charge-port open|close`, and `scheduled-charging set|off` require `--yes`
 - `location` is *approximate* by default; add `--yes` for precise coordinates
 
 ## Privacy
