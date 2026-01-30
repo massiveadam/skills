@@ -1,0 +1,11 @@
+{
+  "owner": "tolibear",
+  "slug": "promptify",
+  "displayName": "Promptify Skill",
+  "latest": {
+    "version": "3.1.0",
+    "publishedAt": 1769725339117,
+    "commit": null
+  },
+  "history": []
+}
