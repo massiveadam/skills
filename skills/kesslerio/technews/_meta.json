@@ -1,0 +1,11 @@
+{
+  "owner": "kesslerio",
+  "slug": "technews",
+  "displayName": "TechMeme News",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1769838145807,
+    "commit": null
+  },
+  "history": []
+}
