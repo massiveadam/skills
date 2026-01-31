@@ -37,7 +37,7 @@ python3 {baseDir}/scripts/client.py transcribe "/path/to/audio/file.ogg"
 To generate audio from text and save it to a file (Text-to-Speech), run the client script with the `synthesize` command.
 
 ```bash
-python3 {baseDir}/scripts/client.py synthesize "Text to speak" --output "/path/to/output.ogg"
+python3 {baseDir}/scripts/client.py synthesize "Text to speak" --output "/path/to/output.mp3"
 ```
 
 ### Health Check
@@ -45,4 +45,12 @@ To check if the voice agent API is running and healthy:
 
 ```bash
 python3 {baseDir}/scripts/client.py health
+```
+
+### Service Management
+If the `Health Check` fails or you receive a connection error, the service may be stopped.
+You can attempt to start it by running:
+
+```bash
+{baseDir}/scripts/start.sh
 ```

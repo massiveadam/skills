@@ -96,7 +96,8 @@ def synthesize(text, output_file):
         if ext == ".wav":
             fmt = "pcm"
         elif ext == ".ogg":
-            fmt = "ogg_vorbis"
+            # Force MP3 for OGG files to ensure WhatsApp mobile compatibility
+            fmt = "mp3"
         elif ext == ".mp3":
             fmt = "mp3"
         
