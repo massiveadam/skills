@@ -3,11 +3,16 @@
   "slug": "browser-use",
   "displayName": "Browser Use",
   "latest": {
-    "version": "1.0.1",
-    "publishedAt": 1769758346221,
-    "commit": "https://github.com/clawdbot/skills/commit/f5cc89736326ae7315a1b0b9ca0ee3eb8855b7e2"
+    "version": "1.0.0",
+    "publishedAt": 1769388231012,
+    "commit": null
   },
   "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1769758346221,
+      "commit": "https://github.com/clawdbot/skills/commit/f5cc89736326ae7315a1b0b9ca0ee3eb8855b7e2"
+    },
     {
       "version": "1.0.0",
       "publishedAt": 1769388231012,
