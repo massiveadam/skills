@@ -1,0 +1,11 @@
+{
+  "owner": "vardominator",
+  "slug": "maestro-skill",
+  "displayName": "Maestro Bitcoin",
+  "latest": {
+    "version": "0.1.1",
+    "publishedAt": 1769900577025,
+    "commit": null
+  },
+  "history": []
+}
