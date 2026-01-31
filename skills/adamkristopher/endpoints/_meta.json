@@ -1,13 +1,18 @@
 {
   "owner": "adamkristopher",
   "slug": "endpoints",
-  "displayName": "Endpoints API Toolkit",
+  "displayName": "Endpoints",
   "latest": {
-    "version": "1.0.1",
-    "publishedAt": 1769738290939,
-    "commit": "https://github.com/clawdbot/skills/commit/dc5b448eeafc51a5ab64f677a8a83a0ad8109749"
+    "version": "1.0.0",
+    "publishedAt": 1769661711673,
+    "commit": null
   },
   "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1769738290939,
+      "commit": "https://github.com/clawdbot/skills/commit/dc5b448eeafc51a5ab64f677a8a83a0ad8109749"
+    },
     {
       "version": "1.0.0",
       "publishedAt": 1769661711673,
