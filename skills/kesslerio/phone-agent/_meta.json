@@ -1,0 +1,11 @@
+{
+  "owner": "kesslerio",
+  "slug": "phone-agent",
+  "displayName": "Phone Voice Agent",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1769838219955,
+    "commit": null
+  },
+  "history": []
+}
