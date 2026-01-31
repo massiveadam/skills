@@ -716,6 +716,7 @@ JSON.stringify(
       result.box_info = {
         visible: ariaNode.box.visible,
         cursor: ariaNode.box.cursor,
+        rect: ariaNode.box.rect,
       };
 
       // Serialize children

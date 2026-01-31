@@ -1,3 +1,13 @@
+[[bin]]
+name = "mcp-server"
+path = "src/bin/mcp_server.rs"
+required-features = ["mcp-server"]
+
+[[bin]]
+name = "fast-browser-use"
+path = "src/bin/cli.rs"
+required-features = ["cli"]
+
 [package]
 name = "browser-use"
 version = "0.1.0"
@@ -10,13 +20,8 @@ readme = "README.md"
 keywords = ["browser", "automation", "cdp", "devtools", "mcp"]
 categories = ["web-programming", "development-tools"]
 
-[[bin]]
-name = "mcp-server"
-path = "src/bin/mcp_server.rs"
-required-features = ["mcp-server"]
-
 [features]
-default = ["mcp-handler"]
+default = ["mcp-handler", "cli"]
 mcp-handler = ["rmcp/macros", "rmcp/server"]
 mcp-server = [
     "mcp-handler",
@@ -28,6 +33,12 @@ mcp-server = [
     "axum",
     "tokio-util",
     "env_logger",
+]
+cli = [
+    "clap",
+    "tokio",
+    "env_logger",
+    "rand",
 ]
 
 [dependencies]
@@ -47,6 +58,8 @@ tokio = { version = "1", features = [
     "sync",
     "net",
     "signal",
+    "io-std",
+    "fs",
 ], optional = true }
 clap = { version = "4.5", features = ["derive"], optional = true }
 axum = { version = "0.8", optional = true }
@@ -54,6 +67,11 @@ tokio-util = { version = "0.7", optional = true }
 log = "0.4"
 env_logger = { version = "0.11", optional = true }
 html2md = "0.2"
+rand = { version = "0.8", optional = true }
+image = "0.24"
+imageproc = "0.23"
+rusttype = "0.9"
+base64 = "0.21"
 
 [dev-dependencies]
 urlencoding = "2.1"

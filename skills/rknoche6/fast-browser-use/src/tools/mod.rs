@@ -28,6 +28,7 @@ pub mod select;
 pub mod snapshot;
 pub mod switch_tab;
 pub mod tab_list;
+pub mod annotate;
 mod utils;
 pub mod wait;
 
@@ -57,6 +58,7 @@ pub use select::SelectParams;
 pub use snapshot::SnapshotParams;
 pub use switch_tab::SwitchTabParams;
 pub use tab_list::TabListParams;
+pub use annotate::AnnotateParams;
 pub use wait::WaitParams;
 
 use crate::{browser::BrowserSession, dom::DomTree, error::Result};
@@ -223,6 +225,7 @@ impl ToolRegistry {
 
         // Register utility tools
         registry.register(screenshot::ScreenshotTool);
+        registry.register(annotate::AnnotateTool);
         registry.register(evaluate::EvaluateTool);
         registry.register(close::CloseTool);
         

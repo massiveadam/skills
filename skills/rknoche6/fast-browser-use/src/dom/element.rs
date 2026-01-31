@@ -91,11 +91,24 @@ pub struct BoxInfo {
     /// CSS cursor value (e.g., "pointer", "default")
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cursor: Option<String>,
+
+    /// Bounding box rectangle (x, y, width, height)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rect: Option<Rect>,
+}
+
+/// Rectangle for bounding box
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct Rect {
+    pub x: f64,
+    pub y: f64,
+    pub width: f64,
+    pub height: f64,
 }
 
 impl Default for BoxInfo {
     fn default() -> Self {
-        Self { visible: false, cursor: None }
+        Self { visible: false, cursor: None, rect: None }
     }
 }
 
@@ -150,7 +163,7 @@ impl AriaNode {
 
     /// Builder: set box info
     pub fn with_box(mut self, visible: bool, cursor: Option<String>) -> Self {
-        self.box_info = BoxInfo { visible, cursor };
+        self.box_info = BoxInfo { visible, cursor, rect: None };
         self
     }
 
